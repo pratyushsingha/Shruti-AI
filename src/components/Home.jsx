@@ -29,7 +29,7 @@ const Home = () => {
                 </div>
                 <div className="flex flex-col items-center text-center justify-center">
                   <h2 className="font-medium title-font mt-4 text-white text-lg">
-                    Shruti.ai
+                    Vedaa.ai
                   </h2>
                   <div className="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4" />
                   <p className="text-base text-gray-400">
