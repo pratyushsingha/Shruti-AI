@@ -11,7 +11,6 @@ const apiKey = import.meta.env.VITE_MY_API_KEY;
 const Chatbot = () => {
     const [input, setInput] = useState("");
     const [conversation, setConversation] = useState([]);
-    const [prompt, setPrompt] = useState([]);
     const [loading, setLoading] = useState(false);
 
 
@@ -37,7 +36,6 @@ const Chatbot = () => {
         };
 
         try {
-            setPrompt(newInput);
             const response = await axios.post(url, data, { headers });
             if (response.data.choices && response.data.choices.length > 0) {
                 const content = response.data.choices[0].message.content;
@@ -49,7 +47,7 @@ const Chatbot = () => {
             }
         } catch (error) {
             console.error('Error:', error);
-            toast.error('error in fetching data due to: ', error, {
+            toast.error('error in fetching data ', error, {
                 duration: 3000,
             })
         }
