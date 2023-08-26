@@ -43,14 +43,14 @@ const Chatbot = () => {
                 const content = response.data.choices[0].message.content;
                 setConversation([...conversation, { role: 'user', content: newInput }, { role: 'assistant', content }]);
             } else {
-               toast.error('No Response Content found',{
-                duration:3000,
-               });
+                toast.error('No Response Content found', {
+                    duration: 3000,
+                });
             }
         } catch (error) {
             console.error('Error:', error);
-            toast.error('error in fetching data due to: ', error,{
-                duration:3000,
+            toast.error('error in fetching data due to: ', error, {
+                duration: 3000,
             })
         }
         setLoading(false);
@@ -120,8 +120,8 @@ const Chatbot = () => {
                     className: '',
                     duration: 5000,
                     style: {
-                        background: '#363636',
-                        color: '#fff',
+                        background: '#fff',
+                        color: '#363636',
                     },
 
                     success: {
