@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import toast, { Toaster } from 'react-hot-toast';
 
 import Navbar from './Navbar';
 import Spinner from './Spinner';
+import Equilizer from './Equilizer';
 
 const apiKey = import.meta.env.VITE_MY_API_KEY;
 
@@ -12,7 +13,50 @@ const Chatbot = () => {
     const [input, setInput] = useState("");
     const [conversation, setConversation] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [isListening, setIsListening] = useState(false);
+    const [recognition, setRecognition] = useState(null);
 
+    useEffect(() => {
+        const initSpeechRecognition = () => {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognitionInstance = new SpeechRecognition();
+
+            recognitionInstance.continuous = true;
+            recognitionInstance.interimResults = true;
+            recognitionInstance.lang = 'en-US'; // Set the desired language
+
+            recognitionInstance.onstart = () => {
+                setIsListening(true);
+            };
+
+            recognitionInstance.onend = () => {
+                setIsListening(false);
+            };
+
+            recognitionInstance.onresult = (event) => {
+                const transcript = event.results[event.results.length - 1][0].transcript;
+                onResult(transcript);
+            };
+
+            setRecognition(recognitionInstance);
+        };
+
+        initSpeechRecognition();
+    }, []);
+    const onResult = (transcript) => {
+        setInput(transcript);
+    };
+
+    const handleToggleClick = () => {
+        if (recognition) {
+            if (isListening) {
+                recognition.stop();
+                chatResponse();
+            } else {
+                recognition.start();
+            }
+        }
+    };
 
     const changeHandler = (e) => {
         setInput(e.target.value);
@@ -86,8 +130,9 @@ const Chatbot = () => {
 
                             </div>
                             <div className="sticky bottom-0 z-10">
-                                <form onSubmit={submitHandler}>
-                                    <div className="flex items-center">
+
+                                <div className="flex items-center">
+                                    <div className='flex w-full space-x-1'>
                                         <input
                                             type="text"
                                             placeholder="Ask me something..."
@@ -95,14 +140,20 @@ const Chatbot = () => {
                                             onChange={changeHandler}
                                             className="w-full px-4 py-2 mr-2 text-gray-700 border rounded focus:outline-none"
                                         />
-                                        <button
-                                            type="submit"
-                                            className="px-4 py-2 text-white bg-[#766AC8] rounded hover:bg-blue-700 focus:outline-none"
-                                        >
-                                            {loading ? <Spinner /> : "Send"}
+                                        <button onClick={handleToggleClick}>
+                                            {!isListening ? (<span className="material-symbols-outlined self-center pr-3">
+                                                mic
+                                            </span>) : (<Equilizer />)}
                                         </button>
                                     </div>
-                                </form>
+
+                                    <button onClick={submitHandler}
+                                        type="submit"
+                                        className="px-4 py-2 text-white bg-[#766AC8] rounded hover:bg-blue-700 focus:outline-none"
+                                    >
+                                        {loading ? <Spinner /> : "Send"}
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
