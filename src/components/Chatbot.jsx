@@ -30,8 +30,12 @@ const Chatbot = () => {
     const handleToggleClick = () => {
         if (recognition) {
             setRecognition(SpeechRecognition.startListening);
+        }
+        else {
+            setRecognition(SpeechRecognition.stopListening)
             setInput(transcript);
             console.log(transcript);
+
         }
     }
 
