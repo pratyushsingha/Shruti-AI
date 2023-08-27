@@ -117,7 +117,7 @@ const Chatbot = () => {
                     <div>
                         <div className="w-full">
                             <Navbar name="Shruti" logo="https://i.postimg.cc/vBd2MN55/5cb480cd5f1b6d3fbadece79.png" />
-                            <div className="relative w-full p-6 overflow-y-auto h-[40rem]">
+                            <div className="relative w-full p-6 overflow-y-auto h-screen">
                                 <ul className="space-y-2">
                                     {conversation.map((item, id) => (
                                         <li key={id} className={item.role === 'user' ? 'flex justify-start' : 'flex justify-end'}>
