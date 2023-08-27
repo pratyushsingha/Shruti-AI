@@ -15,7 +15,7 @@ const Chatbot = () => {
     const [input, setInput] = useState("");
     const [conversation, setConversation] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [recognition, setRecognition] = useState(SpeechRecognition.stopListening);
+    const [recognition, setRecognition] = useState(false);
 
     const {
         transcript,
