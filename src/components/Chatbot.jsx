@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
+import 'regenerator-runtime/runtime';
+import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 import Navbar from './Navbar';
 import Spinner from './Spinner';
@@ -13,50 +15,26 @@ const Chatbot = () => {
     const [input, setInput] = useState("");
     const [conversation, setConversation] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [isListening, setIsListening] = useState(false);
-    const [recognition, setRecognition] = useState(null);
+    const [recognition, setRecognition] = useState(SpeechRecognition.stopListening);
 
-    useEffect(() => {
-        const initSpeechRecognition = () => {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            const recognitionInstance = new SpeechRecognition();
+    const {
+        transcript,
+        listening,
+        browserSupportsSpeechRecognition
+    } = useSpeechRecognition();
 
-            recognitionInstance.continuous = true;
-            recognitionInstance.interimResults = true;
-            recognitionInstance.lang = 'en-US'; // Set the desired language
-
-            recognitionInstance.onstart = () => {
-                setIsListening(true);
-            };
-
-            recognitionInstance.onend = () => {
-                setIsListening(false);
-            };
-
-            recognitionInstance.onresult = (event) => {
-                const transcript = event.results[event.results.length - 1][0].transcript;
-                onResult(transcript);
-            };
-
-            setRecognition(recognitionInstance);
-        };
-
-        initSpeechRecognition();
-    }, []);
-    const onResult = (transcript) => {
-        setInput(transcript);
-    };
+    if (!browserSupportsSpeechRecognition) {
+        return <span>Browser doesn't support speech recognition.</span>;
+    }
 
     const handleToggleClick = () => {
         if (recognition) {
-            if (isListening) {
-                recognition.stop();
-                chatResponse();
-            } else {
-                recognition.start();
-            }
+            setRecognition(SpeechRecognition.startListening);
+            setInput(transcript);
+            console.log(transcript);
         }
-    };
+    }
+
 
     const changeHandler = (e) => {
         setInput(e.target.value);
@@ -130,7 +108,6 @@ const Chatbot = () => {
 
                             </div>
                             <div className="sticky bottom-0 z-10">
-
                                 <div className="flex items-center">
                                     <div className='flex w-full space-x-1'>
                                         <input
@@ -141,7 +118,7 @@ const Chatbot = () => {
                                             className="w-full px-4 py-2 mr-2 text-gray-700 border rounded focus:outline-none"
                                         />
                                         <button onClick={handleToggleClick}>
-                                            {!isListening ? (<span className="material-symbols-outlined self-center pr-3">
+                                            {!listening ? (<span className="material-symbols-outlined self-center pr-3">
                                                 mic
                                             </span>) : (<Equilizer />)}
                                         </button>
