@@ -3,11 +3,15 @@ import { NavLink } from "react-router-dom";
 import "../App.css";
 
 import Hamburger from "hamburger-react";
-import { useAuth0 } from "@auth0/auth0-react";
 
-const Navbar1 = ({ logo }) => {
+const Navbar1 = ({
+  logo,
+  isAuthenticated,
+  loginWithRedirect,
+  logout,
+  user
+}) => {
   const [isOpen, setOpen] = useState(false);
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
   return (
     <>
@@ -56,7 +60,11 @@ const Navbar1 = ({ logo }) => {
               Login
             </button>
           ) : (
-            <img className="w-10 h-10 rounded-full self-center" src={user.picture} alt={user.name} />
+            <img
+              className="w-10 h-10 rounded-full self-center"
+              src={user.picture}
+              alt={user.name}
+            />
           )}
         </div>
       </div>
