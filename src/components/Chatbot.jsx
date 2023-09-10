@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import Navbar from './Navbar';
 import Spinner from './Spinner';
 import Equilizer from './Equilizer';
+// import Background from '../assets/wp-bg.jpg'
 
 const apiKey = import.meta.env.VITE_MY_API_KEY;
 
@@ -112,8 +113,9 @@ const Chatbot = () => {
 
     return (
         <>
-            <div className="flex justify-center items-center mx-auto">
-                <div className="w-11/12 border rounded ">
+            <div className="flex justify-center items-center mx-auto ">
+
+                <div className="w-11/12 border rounded  border-black bg-gradient-to-r from-violet-500 to-fuchsia-500">
                     <div>
                         <div className="w-full">
                             <Navbar name="Shruti" logo="https://i.postimg.cc/vBd2MN55/5cb480cd5f1b6d3fbadece79.png" />
@@ -131,17 +133,17 @@ const Chatbot = () => {
                             </div>
                             <div className="sticky bottom-0 z-10">
 
-                                <div className="flex items-center">
+                                <div className="flex items-center bg-white ml-2 mr-2 rounded-xl">
                                     <div className='flex w-full space-x-1'>
                                         <input
                                             type="text"
                                             placeholder="Ask me something..."
                                             value={input}
                                             onChange={changeHandler}
-                                            className="w-full px-4 py-2 mr-2 text-gray-700 border rounded focus:outline-none"
+                                            className="w-full px-4 py-2  text-gray-700 border rounded-xl focus:outline-none"
                                         />
                                         <button onClick={handleToggleClick}>
-                                            {!isListening ? (<span className="material-symbols-outlined self-center pr-3">
+                                            {!isListening ? (<span className="material-symbols-outlined self-center pr-3 bg-slate-400 rounded-full px-2 py-2">
                                                 mic
                                             </span>) : (<Equilizer />)}
                                         </button>
@@ -149,7 +151,7 @@ const Chatbot = () => {
 
                                     <button onClick={submitHandler}
                                         type="submit"
-                                        className="px-4 py-2 text-white bg-[#766AC8] rounded hover:bg-blue-700 focus:outline-none"
+                                        className="px-3  py-2 text-white bg-[#766AC8] rounded-xl hover:bg-blue-700 focus:outline-none"
                                     >
                                         {loading ? <Spinner /> : "Send"}
                                     </button>
@@ -158,6 +160,7 @@ const Chatbot = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
             <Toaster
                 position="top-center"
