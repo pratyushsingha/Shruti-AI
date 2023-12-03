@@ -70,7 +70,7 @@ const Chatbot = ({ user }) => {
     const url = "https://api.openai.com/v1/chat/completions";
     const headers = {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
+      Authorization: `Bearer ${import.meta.env.VITE_CHAT_API_KEY}`,
     };
 
     const newInput = input;
