@@ -42,7 +42,7 @@ function App() {
               />
             )}
           />
-          <Route exact path="/team" component={About} />
+          <Route exact path="/about" component={About} />
           <Route exact path="/services" component={Services} />
           <Route exact path="/contact" component={Contact} />
         </Switch>
