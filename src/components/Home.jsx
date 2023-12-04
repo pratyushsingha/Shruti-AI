@@ -12,7 +12,7 @@ const Home = ({ logo, isAuthenticated, loginWithRedirect, logout, user}) => {
         logout={logout}
         user={user}
         logo="https://i.postimg.cc/vBd2MN55/5cb480cd5f1b6d3fbadece79.png"
-        name="Shruti"
+        name="Tech buddy"
         button5="Get Started"
       />
       <section className="text-gray-600  body-font ">
@@ -36,7 +36,7 @@ const Home = ({ logo, isAuthenticated, loginWithRedirect, logout, user}) => {
                 </div>
                 <div className="flex flex-col items-center text-center justify-center">
                   <h2 className="font-medium title-font mt-4 text-white text-lg">
-                    Shruti.ai
+                    Tech buddy.ai
                   </h2>
                   <div className="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4" />
                   <p className="text-base text-gray-400">
@@ -46,7 +46,7 @@ const Home = ({ logo, isAuthenticated, loginWithRedirect, logout, user}) => {
               </div>
               <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-800 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
                 <p className="text-lg mb-4 text-justify">
-                  Namaste I'm Shruti, a chatbot powered by the GPT-3.5
+                  Namaste I'm Tech buddy, a chatbot powered by the GPT-3.5
                   architecture.I am capable of communicating with you using
                   natural language processing and machine learning algorithms.As
                   for my abilities, I can understand and respond to a wide range

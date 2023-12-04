@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const About = () => {
     return (
         <>
-      <Navbar1 name="Shruti" logo="https://i.postimg.cc/vBd2MN55/5cb480cd5f1b6d3fbadece79.png" button5="Get Started" />
+      <Navbar1 name="Tech buddy" logo="https://i.postimg.cc/vBd2MN55/5cb480cd5f1b6d3fbadece79.png" button5="Get Started" />
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
@@ -33,7 +33,7 @@ const About = () => {
                         </p>
                     </div>
                     <div className="flex flex-wrap -m-4">
-                        <div className="p-4 lg:w-1/2">
+                        {/* <div className="p-4 lg:w-1/2">
                             <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                                 <img
                                     alt="team"
@@ -91,8 +91,8 @@ const About = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                        <div className="p-4 lg:w-1/2">
+                        </div> */}
+                        {/* <div className="p-4 lg:w-1/2">
                             <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                                 <img
                                     alt="team"
@@ -150,7 +150,7 @@ const About = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>

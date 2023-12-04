@@ -123,7 +123,7 @@ const Chatbot = ({ user }) => {
           <div>
             <div className="w-full">
               <Navbar
-                name="Shruti"
+                name="Tech buddy"
                 logo="https://i.postimg.cc/vBd2MN55/5cb480cd5f1b6d3fbadece79.png"
               />
               <div className="relative w-full p-6 overflow-y-auto h-screen">

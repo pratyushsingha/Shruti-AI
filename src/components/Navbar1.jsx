@@ -26,7 +26,7 @@ const Navbar1 = ({
             className="w-10 h-10 text-white rounded-full self-center"
             viewBox="0 0 24 24"
           ></img>
-          <span className="text-2xl md:text-3xl self-center">Shruti AI</span>
+          <span className="text-2xl md:text-3xl self-center">Tech buddy</span>
           <NavLink to="/">
             <span className="mt-3 text-base font-semibold self-center cursor-pointer hidden md:block">
               Home
