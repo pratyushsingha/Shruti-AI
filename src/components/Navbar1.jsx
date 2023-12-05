@@ -32,11 +32,6 @@ const Navbar1 = ({
               Home
             </span>
           </NavLink>
-          <NavLink to="/team">
-            <span className="mt-3 text-base font-semibold self-center cursor-pointer hidden md:block">
-              Team
-            </span>
-          </NavLink>
           <NavLink to="/about">
             <span className="mt-3 text-base font-semibold self-center cursor-pointer hidden md:block">
               About
